@@ -1,3 +1,5 @@
+import logging
+
 import langid
 import torch
 import argparse
@@ -124,5 +126,5 @@ if __name__ == '__main__':
     parser.add_argument("--output", type=str, default="output", help="output directory")
     args = parser.parse_args()
     msg, result, _ = predict(args.text, "default", args.audio, args.output)
-    print(msg)
-    exit(0 if result is None else 1)
+    logging.info(msg)
+    exit(1 if result is None else 0)
